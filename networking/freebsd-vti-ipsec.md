@@ -66,7 +66,7 @@ include strongswan.d/*.conf
 ```
 
 ## System setup
-### By hand
+### Manually configure IPsec interface and add routes
 ```
 $ sudo ifconfig ipsec0 create reqid 100
 $ sudo ifconfig ipsec0 inet tunnel 10.0.0.1 10.0.0.2 up
@@ -75,7 +75,15 @@ $ sudo route add 192.168.20.0/24 169.254.1.2
 $ sudo route add 172.16.20.0/24 169.254.1.2
 ```
 
-### Persistent configurations
+### Start strongSwan and do some testing
+```
+$ sudo service strongswan onestart
+...
+$ sudo setkey -D
+$ sudo setkey -DP
+```
+
+### Make them all persistent
 At the time of 11.1-RC3, I couldn't find a way to fully setup ipsec interface only with the rc.conf. So I hesitantly use /etc/rc.local.
 
 Maybe /etc/network.subr (clone_up?) will be updated to support it in near future.
