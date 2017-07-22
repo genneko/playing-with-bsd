@@ -13,7 +13,7 @@ title: Route-based VPN with FreeBSD-11.1's VTI (if_ipsec)
 172.16.10.0/24                                        172.16.20.0/24
 ```
 
-## strongSwan
+## strongSwan setup
 ### /usr/local/etc/ipsec.conf
 ```
 conn route-based
