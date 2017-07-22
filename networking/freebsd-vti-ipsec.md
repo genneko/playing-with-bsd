@@ -4,7 +4,10 @@ title: Route-based VPN with FreeBSD-11.1's VTI (if_ipsec)
 ---
 
 # Route-based VPN with FreeBSD-11.1's VTI (if_ipsec)
-**NOTE**: This text shows bsd1 configurations only.
+I have managed to setup route-based IPsec VPN with FreeBSD-11.1 RC3, which had introduced ipsec virtual tunnel interface.
+Here is a record of my experiment just for your information.
+
+**NOTE**: The following text shows bsd1 configurations only.
 
 ## Network configuration
 ```
@@ -73,6 +76,10 @@ $ sudo route add 172.16.20.0/24 169.254.1.2
 ```
 
 ### Persistent configurations
+At the time of 11.1-RC3, I couldn't find a way to fully setup ipsec interface only with the rc.conf. So I hesitantly use /etc/rc.local.
+
+Maybe /etc/network.subr (clone_up?) will be updated to support it in near future.
+
 #### /etc/rc.conf
 ```
 gateway_enable="YES"
