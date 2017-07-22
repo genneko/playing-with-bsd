@@ -63,7 +63,17 @@ include strongswan.d/*.conf
 ```
 
 ## System setup
-### /etc/rc.conf
+### By hand
+```
+$ sudo ifconfig ipsec0 create reqid 100
+$ sudo ifconfig ipsec0 inet tunnel 10.0.0.1 10.0.0.2 up
+$ sudo ifconfig ipsec0 inet 169.254.1.1/32 169.254.1.2
+$ sudo route add 192.168.20.0/24 169.254.1.2
+$ sudo route add 172.16.20.0/24 169.254.1.2
+```
+
+### Persistent configurations
+#### /etc/rc.conf
 ```
 gateway_enable="YES"
 cloned_interfaces="ipsec0"
@@ -71,11 +81,11 @@ create_args_ipsec0="reqid 100"
 ifconfig_ipsec0="inet 169.254.1.1/32 169.254.1.2"
 static_routes="remote1 remote2"
 route_remote1="192.168.20.0/24 169.254.1.2"
-route_remote1="172.16.20.0/24 169.254.1.2"
+route_remote2="172.16.20.0/24 169.254.1.2"
 strongswan_enable="YES"
 ```
 
-### /etc/rc.local
+#### /etc/rc.local
 ```
 ifconfig ipsec0 inet tunnel 10.0.0.1 10.0.0.2
 ```
