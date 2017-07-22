@@ -1,6 +1,6 @@
 ---
 layout: default
-title: playing with BSD
+title: Playing with BSD
 ---
 
 # Playing with BSD
