@@ -2,7 +2,7 @@
 layout: default
 title: Route-based VPN with FreeBSD-11.1's VTI (if_ipsec)
 ---
-[[Playing with BSD]](../../index)
+[[Playing with BSD]](../index)
 
 # Route-based VPN with FreeBSD-11.1's VTI (if_ipsec)
 I have managed to setup route-based IPsec VPN with FreeBSD-11.1 RC3, which had introduced ipsec virtual tunnel interface.
