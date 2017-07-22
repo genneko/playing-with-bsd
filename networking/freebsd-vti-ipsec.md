@@ -14,6 +14,11 @@ title: Route-based VPN with FreeBSD-11.1's VTI (if_ipsec)
 ```
 
 ## strongSwan setup
+### Installation
+```
+$ sudo pkg install strongswan
+```
+
 ### /usr/local/etc/ipsec.conf
 ```
 conn route-based
