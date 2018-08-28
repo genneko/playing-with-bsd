@@ -51,19 +51,20 @@ As I mentioned earlier, the tunnel local endpoint is my RPI-B. Its Ethernet inte
 I use the following parameters in this example.
     ```text
     RPI-B LAN IPv4 Address (ue0) : 192.168.1.3 (Behind a NAT box)
-    RPI-B LAN IPv6 Address (ue0) : 2001:db8:2:beef::3/64
-    RPI-B WAN IPv6 Address (gif0): 2001:db8:1:beef::2/128
-    
-    Tunnel Server IPv4 Address   : 10.10.10.10
-    Tunnel Server IPv6 Address   : 2001:db8:1:beef::1
-    Tunnel Client IPv6 Address   : 2001:db8:1:beef::2
-    Routed /64 Prefix            : 2001:db8:2:beef::/64
+    RPI-B LAN IPv6 Address (ue0) : 2001:db8:2:beef::3   <--+
+    RPI-B WAN IPv6 Address (gif0): 2001:db8:1:beef::2 <--+ |
+                                                         | |
+    Tunnel Server IPv4 Address   : 10.10.10.10           | |
+    Tunnel Server IPv6 Address   : 2001:db8:1:beef::1    | |
+    Tunnel Client IPv6 Address   : 2001:db8:1:beef::2 <--+ |
+    Routed /64 Prefix            : 2001:db8:2:beef::/64 <--+
     ```
 
 2. Login to the ASUS router and add the following configurations
     - Add a Port Forwarding (more exactly Protocol Forwarding) rule - Forward Protocol 41(ipv6) from "HE Tunnel Server IPv4 Address" to PRI-B(192.168.1.3) 
     - Disable 'NAT acceleration' on LAN > Switch Control page.
       (I found that IPv6 communication is too slow without this change)
+
 
 3. Login to the RPI-B and add the following lines to /etc/rc.conf.  
     ```text
